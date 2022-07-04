@@ -1,0 +1,562 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&display=swap");
+/* ! barra menu*/
+/* Barra estatica */
+/* .topheader{
+  position: fixed;
+} */
+.topheader {
+  position: fixed; /* se queda fijado en su posicion */
+  /* box-shadow: 10px 4px 5px var(--theme-color); */
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 100; /* para que la imagen se coloque siempre por detras */
+}
+
+
+/* globales */
+.profile-title{
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  /* color: white; */
+}
+.nav-link{
+  color:white;
+}
+
+/* foto perfil */
+.img1{
+  border-radius: 50px;
+  /* sombra de la foto */
+  box-shadow: 2px 1px 0px rgb(237, 248, 248);
+}
+/* span{
+  color: green;
+} */
+
+
+
+/* !PERFIL INICIO*/
+/*! dispositivos moviles */
+.profile-info {
+  margin-bottom: 25px;
+}
+.profile-img {
+  /* la imagen tendra 80% de tamaño de su contenedor pero no podra exceder
+   de 350px de ancho */
+  width: 80%;
+  max-width: 300px;
+  transform: scaleX(-1);
+}
+.profile-img-section {
+  position: relative;
+  display: inline;
+}
+.profile-img-line {
+  background-color:black;
+  height: 15px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: auto;
+}
+.profile {
+  text-align: center;
+}
+.profile-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0;
+  /* color: rgb(32, 124, 32); */
+  font-family: "Noto Sans", sans-serif;
+}
+.profile-details {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3; /* espaciado */
+  max-width: 450px; /* no exceder de 7 a 10 palabras por linea */
+  margin: 20px auto; /* centrado */
+}
+.profile-btn {
+  background-color: var(--secundary-color);
+  color: var(--text-color-inverse);
+  border: none;
+  font-size: 20px;
+  padding: 0.5em 1em; /* relativos al tamaño de fuente del elemento */
+  border-radius: 7px;
+  cursor: pointer;
+}
+.profile-btn:hover {
+  /* desenfoque o cambio de color en imagenes,fondos o bordes  */
+  filter: brightness(130%);
+}
+
+/*! dispositivos de 950px en adelante */
+@media (min-width: 950px) {
+  .profile-info {
+    margin-bottom: 0;
+  }
+  .profile-img {
+    /* la imagen tendra 80% de tamaño de su contenedor pero no podra exceder
+   de 350px de ancho */
+    width: 100%;
+    max-width: 350px;
+    transform: scaleX(1);
+  }
+  .profile {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    max-width: 980px;
+    margin: 0 auto;
+    align-items: center;
+   }
+  .profile-title {
+    font-size: 60px;
+  }
+  .profile-details {
+    font-size: 25px;
+    margin: 30px 0;
+  }
+  .profile-btn {
+     font-size: 28px;
+  }
+  
+}
+
+
+/* !EXPERIENCIAS */
+.experiences {
+  display: flex;
+  flex-direction: column;
+}
+.wave {
+  position: relative; /* para aplicar los top left rigth y bottom */
+ /*  para evitar el pixeleado en las uniones */
+}
+/* invierte la figura que esta arriba de experiencia */
+.wave_bottom {
+  transform: scaleY(-1);
+  top: -2px; /*  para evitar el pixeleado en las uniones */
+}
+.experience {
+  padding: 25px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+@media (min-width: 950px) {
+  .experience-description {
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 1.3;
+  }
+ .experience {
+    padding: 0;
+  } 
+   .experience_left {
+    text-align: right;
+  } 
+  /* que quede intercalada las 3 experiencias */
+  .experiences-grid {
+    display: grid;
+    grid-template-columns: auto 2px auto;
+     gap: 20px 70px;
+       justify-content: center;
+        max-width: 980px;
+    margin: 0 auto;
+  }
+  /* dibuja la linea vertical de cada columna del grid */
+  .line {
+    background-color: white;
+    position: relative; /* para el absoluto del circulo */
+  }
+  /* dibuja el caracter inicial y final de la linea  */
+  .line::before,
+  .line::after {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute; /* posicion absoluta respecto a la linea */
+    top: -20px;
+    left: -9px;
+  }
+  /* para que aparesca en circulo en la ultima linea del grid */
+  .line::after {
+    top: 99%;
+    z-index: 1;/*  para que valla atras*/
+  } 
+}
+
+
+/* !Habilidades */
+
+/* Forma de cada boton o lleno de palabra */
+.skills-skill {
+  font-size: 20px;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 0.5em 0.7em;
+  margin: 10px;
+  background-image: linear-gradient(225deg, #257c49 0, #25b154 50%, #247e3f 100%);
+}
+/* Efecto de cada boton-transición*/
+.skills-skill:hover {
+    color: white;
+    /* salto que hace cada boton */
+    transform:translateY(-15%);
+    cursor:default;
+    transition: transform .4s  ease-in-out;
+}
+/* ubicacion de cada boton */
+.skills-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media(min-width: 950px) {
+  .skills-title {
+    font-size: 50px;
+  }
+  .skills-skill {
+    font-size: 30px;
+    margin: 20px;
+  }
+}
+
+
+/* !CURSO */
+/* .cursos-title{
+  color: #000000;
+} */
+.cursos{
+     max-width: 980px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     background: white;
+     margin: 0 auto;   
+     padding: 30px;
+}
+
+.cursos .card {
+     position: relative;
+     max-width: 300px;
+     height: 215px;
+     background: red;
+     margin: 30px 10px;
+     padding: 20px 15px;
+     display: flex;
+     flex-direction: column;
+     /* box-shadow: 0 5px 20px rgba(143, 13, 13, 0.5); */
+     transition: 0.3s ease-in-out;
+}
+.cursos .card:hover{
+     height: 420px;
+}
+.cursos .card .imgBx {
+     position: relative;
+     width: 260px;
+     height: 260px;
+     top:-60px;
+     left: 5px;
+     /* sombreado en los cuadros ue tienen las imagenes */
+     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
+     z-index: 1;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+.cursos .card .imgBx img {
+     width: 200px;
+     height: 200px;
+     border-radius: 10px;
+  
+   
+ }
+ /* letras del interior del cuadro */
+.cursos .card .content {
+     position: relative;
+     margin-top: -140px;
+     padding: 10px 15px;
+     text-align: center;
+     color:#fff;
+     visibility: hidden;
+     opacity: 0;
+     transition: 0.3s ease-in-out;
+}
+ .cursos .card:hover .content {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+}
+ @media(min-width: 950px) {
+    .cursos-title {
+      font-size: 50px;
+   }
+  
+}
+
+
+
+/* !Contacto*/
+.footer-paralax {
+  padding: 4rem 0 0 0;
+}
+.contact-mf {
+  margin-top: 4rem;
+}
+@media (min-width: 767px) {
+  .contact-mf .box-pl2 {
+    margin-top: 3rem;
+    padding-left: 0rem;
+  }
+}
+.php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+.php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #4a18d2;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+.php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #d21875;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+.php-email-form input, .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+.php-email-form input:focus, .php-email-form textarea:focus {
+  border-color: #0078ff;
+}
+.php-email-form input {
+  padding: 10px 15px;
+}
+.php-email-form textarea {
+  padding: 12px 15px;
+  margin-bottom: 0;
+}
+/* BOTONN */
+.php-email-form button[type=submit] {
+  background: #000000;
+  border: 0;
+  padding: 10px 24px;
+  color: #fff;
+  transition: 0.4s;
+/* Color secundario del boton */
+}
+.php-email-form button[type=submit]:hover {
+  background: rgb(94, 46, 14);
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* cuadro que contiene contacto */
+.box-shadow-full {
+  padding: 3rem 1.25rem;
+  position: relative;
+  background-color: #fff;
+  margin-bottom: 3rem;
+  z-index: 2;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.06), 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+/* title lef=titulo izquierdo -letra contacto */
+.title-box-2 {
+  margin-bottom: 3rem;
+}
+.title-left {
+  font-size: 2rem;
+  position: relative;
+}
+.title-left:before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  background-color: #0078ff;
+  width: 100px;
+  bottom: -12px;
+}
+/* imagenes de face-insta */
+.socials {
+  padding: 1.5rem 0;
+}
+/* orden de los logos de las redes  */
+.socials ul li {
+  display: inline-block;
+}
+.socials .ico-circle {
+  height: 40px;
+  width: 40px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  line-height: 1.6;
+  margin: 0 15px 0 0;
+  box-shadow: 0 0 0 3px #0078ff;
+  transition: all 500ms ease;
+}
+.socials .ico-circle:hover {
+  background-color: #0078ff;
+  color: #fff;
+  /* color: #000000; */
+  box-shadow: 0 0 0 3px #cde1f8;
+  transition: all 500ms ease;
+}
+/*------/ circulo ico /------*/
+.ico-circle {
+  height: 100px;
+  width: 100px;
+  font-size: 2rem;
+  border-radius: 50%;
+  line-height: 1.55;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 0 0 10px #0078ff;
+  display: block;
+}
+/* .socials{
+  text-align: center;
+} */
+
+
+/* !modal del contacto */
+.modal {
+  position: fixed; /*sale del flujo*/
+  background-color: #333;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 1000;
+  opacity: 0; /*no se ve el modal*/
+  pointer-events: none; /* anula los eventos*/
+  transition:opacity .5s
+
+}
+.modal:target{
+   opacity: 1;
+   pointer-events:unset;
+}
+.modal__container {
+  background-color: #fff;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  overflow: hidden;
+  text-align: center;
+  padding: 2.5em 1.5em;
+  border-radius: 1em;
+}
+.modal:target .modal__container {
+  animation: mostrar .5s 1s backwards;
+}
+@keyframes mostrar {
+   0%{
+      transform: translateY(-150vh)
+   }
+   100%{
+      transform: translateY(0)
+   }
+}
+
+.modal__picture {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 400px;
+  margin-bottom: 2em;
+}
+.modal:target .modal__picture {
+  animation: scale .5s 1.5s backwards;
+}
+@keyframes scale {
+   0%{
+      transform: scale(0)
+   }
+}
+
+.modal__img {
+  width: 100%;
+  display: block;
+}
+.modal__title {
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+.modal__title--bold {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+.modal__paragraph {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+.modal__close{
+   display: inline-block;
+   border: 1px solid;
+   padding: 1em 2em;
+   text-decoration: none;
+   color:#fff;
+   border-radius: .5rem;
+   background-color: #190f70;
+   width:100%
+}
+.modal__close:hover{
+  background-color:rgb(230, 89, 89);
+  color:tomato;
+  font-size: 1.1rem;
+}
+@media (max-width:600px){
+   .modal__title{
+      font-size: 1.7rem;
+   }
+}
